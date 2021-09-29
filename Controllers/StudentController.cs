@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using CrudOperatorEntity;
+using Microsoft.Ajax.Utilities;
 using StudentDataAccess;
 
 namespace CrudOperatorUI.Controllers
@@ -18,7 +22,12 @@ namespace CrudOperatorUI.Controllers
             IEnumerable<Student> students = studentDataAccessLayer.GetAllStudent();
             return View(students);
         }
-
+        [HttpPost]
+        public ActionResult Index(string searchString)
+        {
+            IEnumerable<Student> students = studentDataAccessLayer.SearchStudent(searchString);
+            return View(students);
+        }
         // GET: Student/Details/5
         public ActionResult Details(int id)
         {
@@ -86,18 +95,6 @@ namespace CrudOperatorUI.Controllers
             {
                 // TODO: Add delete logic here
                 studentDataAccessLayer.DeleteStudent(student.Id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult Search(string deger)
-        {
-            try
-            {
-                studentDataAccessLayer.SearchStudent(deger);
                 return RedirectToAction(nameof(Index));
             }
             catch

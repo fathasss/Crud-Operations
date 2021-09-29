@@ -25,7 +25,17 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-            </div>
+                <ul class="nav navbar-nav navbar-right" style="margin-top:13px;">
+                    <li>
+                        <form asp-controller="Student" asp-action="Index" method="post">
+                            <p>
+                                <input type="text" name="searchString" />
+                                <input type="submit" value="Ara" />
+                            </p>
+                        </form>
+                    </li>
+                </ul>
+            </div>                     
         </div>
     </div>
     <div class="container body-content">

@@ -43,11 +43,13 @@ namespace CrudOperatorUI.Controllers
         // PUT: api/StudentApi/5
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
         // DELETE: api/StudentApi/5
         public void Delete(int id)
         {
+
         }
     }
 }
