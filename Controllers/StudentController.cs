@@ -93,5 +93,17 @@ namespace CrudOperatorUI.Controllers
                 return View();
             }
         }
+        public ActionResult Search(string deger)
+        {
+            try
+            {
+                studentDataAccessLayer.SearchStudent(deger);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
