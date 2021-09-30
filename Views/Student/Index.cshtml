@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Index";
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Security/Login");
+    }
 }
 
 <h2>Index</h2>

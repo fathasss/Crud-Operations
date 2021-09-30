@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - ASP.NET Uygulamam</title>
@@ -21,22 +21,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Student")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form style="margin-top:13px;" asp-controller="Student" asp-action="Index" method="post">
-                            <p>
-                                <input type="text" name="searchString" />
-                                <input type="submit" value="Ara" />
-                            </p>
-                        </form>
-                    </li>
-                    <li>@Html.ActionLink("Exit", "Logout", "Security")</li>
-                </ul>
-            </div>                     
+                    <li>@Html.ActionLink("Home", "Login", "Security")</li>
+                </ul>               
+            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -52,3 +39,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginPartial.cshtml";
+}
+
+<h2>Login</h2>
+@ViewBag.Message
+<form method="post" asp-controller="Security" asp-action="Login">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="kname" placeholder="Enter email" name="kname">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pass" placeholder="Enter password" name="kpass">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Giriş</button>
+</form>
