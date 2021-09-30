@@ -1,4 +1,5 @@
-﻿using StudentDataAccess;
+﻿using CrudOperatorEntity;
+using StudentDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace CrudOperatorUI.Controllers
                 return View();  
             }
         }
+        //public ActionResult UserAbout(int id)
+        //{
+        //    UserLogin users = UserLoginAccess.GetUser(id);
+        //    return View(users);
+        //}
         public ActionResult Logout()
         {
             Session["Login"] = 0;
