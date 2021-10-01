@@ -27,15 +27,11 @@ namespace CrudOperatorUI.Controllers
             }
             else
             {
+                Session["Login"] = 0;
                 ViewBag.Message = "Yanlış kullanıcı adı ve şifre";
                 return View();  
             }
         }
-        //public ActionResult UserAbout(int id)
-        //{
-        //    UserLogin users = UserLoginAccess.GetUser(id);
-        //    return View(users);
-        //}
         public ActionResult Logout()
         {
             Session["Login"] = 0;

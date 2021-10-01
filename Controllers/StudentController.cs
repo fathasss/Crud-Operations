@@ -102,10 +102,5 @@ namespace CrudOperatorUI.Controllers
                 return View();
             }
         }
-        public ActionResult UserAbout(int id)
-        {
-            UserLogin users = UserLoginAccess.GetUser(id);
-            return View(users);
-        }
     }
 }
