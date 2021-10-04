@@ -1,0 +1,58 @@
+﻿@model CrudOperatorEntity.Logger
+
+@{
+    ViewBag.Title = "LogDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LogDetails</h2>
+
+<div>
+    <h4>Logger</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerAction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerAction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerBrowser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerBrowser)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Logger")
+</p>

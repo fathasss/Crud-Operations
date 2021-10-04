@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CrudOperatorEntity.Logger>
+
+@{
+    ViewBag.Title = "Logger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Logger</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggerAction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggerDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggerIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggerBrowser)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoggerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoggerAction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoggerDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoggerIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoggerBrowser)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "LogDetails", new { id = item.LoggerId }) |
+            @Html.ActionLink("Delete", "LogDelete", new { id = item.LoggerId })
+        </td>
+    </tr>
+}
+
+</table>

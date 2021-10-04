@@ -1,0 +1,65 @@
+﻿@model CrudOperatorEntity.Logger
+
+@{
+    ViewBag.Title = "LogDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LogDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Logger</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerAction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerAction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoggerBrowser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoggerBrowser)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Logger")
+        </div>
+    }
+</div>
