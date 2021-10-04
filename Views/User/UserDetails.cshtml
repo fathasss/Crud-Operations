@@ -1,0 +1,63 @@
+﻿@model CrudOperatorEntity.UserLogin
+
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Security/Login");
+    }
+}
+
+<h2>UserDetails</h2>
+
+<div>
+    <h4>UserLogin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "UserEdit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "UserIndex")
+</p>

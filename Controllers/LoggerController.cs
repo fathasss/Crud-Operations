@@ -1,4 +1,5 @@
 ﻿using CrudOperatorEntity;
+using CrudOperatorUI.Attribute;
 using StudentDataAccess;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace CrudOperatorUI.Controllers
            logger = new LoggerAccessLayer();
         }
         // GET: Logger
+        [FilterLog]
         public ActionResult Logger()
         {
             IEnumerable<Logger> users = logger.GetAllLogger();
@@ -23,11 +25,12 @@ namespace CrudOperatorUI.Controllers
         }
 
         // GET: Logger/Details/5
+        [FilterLog]
         public ActionResult LogDetails(int id)
         {
             Logger log = logger.GetUserData(id);
             return View(log);
-        }       
+        }
 
         // GET: Logger/Delete/5
         public ActionResult LogDelete(int id)
@@ -37,6 +40,7 @@ namespace CrudOperatorUI.Controllers
         }
         // POST: Logger/Delete/5
         [HttpPost]
+        [FilterLog]
         public ActionResult LogDelete(Logger log)
         {
             try

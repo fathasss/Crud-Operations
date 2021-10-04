@@ -88,7 +88,6 @@ namespace CrudOperatorUI.Controllers
         }
 
         // GET: Student/Delete/5
-        [FilterLog]
         public ActionResult Delete(int id)
         {
             Student student = studentDataAccessLayer.GetStudentData(id);

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CrudOperatorEntity.UserLogin>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Security/Login");
+    }
+}
+
+<h2>UserIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "UserCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UserEdit", new { id=item.UserId }) |
+            @Html.ActionLink("Details", "UserDetails", new { id = item.UserId }) |
+            @Html.ActionLink("Delete", "UserDelete", new { id = item.UserId })
+        </td>
+    </tr>
+}
+
+</table>
