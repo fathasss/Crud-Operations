@@ -22,7 +22,7 @@ namespace CrudOperatorUI.Controllers
             int result = UserLoginAccess.UserControl(kname, kpass);
             if (result == 1)
             {
-                Session["Login"] = 1;
+                Session.Add("Login", kname);
                 return RedirectToAction("Index", "Student");
             }
             else

@@ -1,12 +1,15 @@
 ﻿using CrudOperatorEntity;
+using CrudOperatorUI.Utility;
 using StudentDataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+//Web API
 namespace CrudOperatorUI.Controllers
 {
     public class StudentApiController : ApiController
@@ -15,13 +18,15 @@ namespace CrudOperatorUI.Controllers
         // GET: api/StudentApi
         public IEnumerable<Student> Get()
         {
-            return layerStudent.GetAllStudent().ToList();
+            //All get data
+            return layerStudent.GetAllStudent();
         }
 
         // GET: api/StudentApi/5
         public IHttpActionResult Get(int id)
         {
-            var arananOgrenci = (layerStudent.GetAllStudent().ToList().Where(u => u.Id == id)).FirstOrDefault();
+            //Id get data
+            Student arananOgrenci = ApiAccess.getById(id);
             if (arananOgrenci == null)
                 return NotFound();
             else
@@ -29,27 +34,25 @@ namespace CrudOperatorUI.Controllers
         }
 
         // POST: api/StudentApi
-        public IHttpActionResult Post([FromBody]Student newStudent)
+        [HttpPost]
+        public void Post(Student newStudent)
         {
-            var ogrenciAdi = newStudent != null ? newStudent.FirstName : "";
-            var ogrenciSoyadi = newStudent != null ? newStudent.LastName : "";
-            var ogrenciMail = newStudent != null ? newStudent.Email : "";
-            var ogrenciPhone = newStudent != null ? newStudent.Mobile : "";
-            var ogrenciAddress = newStudent != null ? newStudent.Address : "";
-            layerStudent.GetAllStudent().ToList().Add(newStudent);
-            return Ok(ogrenciAdi);
+            //Insert Api Method
+            ApiAccess.AddStudent(newStudent);
         }
 
         // PUT: api/StudentApi/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody] Student newStudent)
         {
-
+            //Update Api Method
+            //...
         }
 
         // DELETE: api/StudentApi/5
         public void Delete(int id)
         {
-
+            //Delete Api method
+            ApiAccess.Deleted(id);
         }
     }
 }

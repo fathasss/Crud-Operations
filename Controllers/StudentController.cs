@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using CrudOperatorEntity;
+using CrudOperatorUI.Attribute;
 using Microsoft.Ajax.Utilities;
 using StudentDataAccess;
 
@@ -17,18 +18,21 @@ namespace CrudOperatorUI.Controllers
            studentDataAccessLayer = new StudentDataAccessLayer();
         }
         // GET: Student
+        [FilterLog]
         public ActionResult Index()
         {
             IEnumerable<Student> students = studentDataAccessLayer.GetAllStudent();
             return View(students);
         }
         [HttpPost]
+        [FilterLog]
         public ActionResult Index(string searchString)
         {
             IEnumerable<Student> students = studentDataAccessLayer.SearchStudent(searchString);
             return View(students);
         }
         // GET: Student/Details/5
+        [FilterLog]
         public ActionResult Details(int id)
         {
             Student student = studentDataAccessLayer.GetStudentData(id);
@@ -36,6 +40,7 @@ namespace CrudOperatorUI.Controllers
         }
 
         // GET: Student/Create
+        [FilterLog]
         public ActionResult Create()
         {
             return View();
@@ -43,6 +48,7 @@ namespace CrudOperatorUI.Controllers
 
         // POST: Student/Create
         [HttpPost]
+        [FilterLog]
         public ActionResult Create(Student student)
         {
             try
@@ -58,6 +64,7 @@ namespace CrudOperatorUI.Controllers
         }
 
         // GET: Student/Edit/5
+        [FilterLog]
         public ActionResult Edit(int id)
         {
             return View();
@@ -65,6 +72,7 @@ namespace CrudOperatorUI.Controllers
 
         // POST: Student/Edit/5
         [HttpPost]
+        [FilterLog]
         public ActionResult Edit(Student student)
         {
             try
@@ -80,6 +88,7 @@ namespace CrudOperatorUI.Controllers
         }
 
         // GET: Student/Delete/5
+        [FilterLog]
         public ActionResult Delete(int id)
         {
             Student student = studentDataAccessLayer.GetStudentData(id);
@@ -89,6 +98,7 @@ namespace CrudOperatorUI.Controllers
         // POST: Student/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [FilterLog]
         public ActionResult Delete(Student student)
         {
             try

@@ -29,8 +29,8 @@
                     <li>
                         <form style="margin-top:13px;" asp-controller="Student" asp-action="Index" method="post">
                             <p>
-                                <input type="search" name="searchString" placeholder="Arama yap..."/>
-                                <input type="submit" value="Ara"/>
+                                <input type="search" name="searchString" placeholder="Arama yap..." />
+                                <input type="submit" value="Ara" />
                             </p>
                         </form>
                     <li>@Html.ActionLink("Exit", "Logout", "Security")</li>
@@ -41,9 +41,10 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ASP.NET Uygulamam</p>
-        </footer>
+            <footer>
+                ©  @DateTime.Now.Year  Copyright: Fatih HAS, ASP.NET Uygulamam
+            </footer>
+        <!-- Footer -->
     </div>
 
     @Scripts.Render("~/bundles/jquery")
