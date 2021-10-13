@@ -1,4 +1,5 @@
 ﻿using CrudOperatorEntity;
+using CrudOperatorUI.Attribute;
 using StudentDataAccess;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace CrudOperatorUI.Controllers
     public class SecurityController : Controller
     {
         // GET: Security
+        [FilterLog]
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
+        [FilterLog]
         public ActionResult Login(string kname,string kpass)
         {
             int result = UserLoginAccess.UserControl(kname, kpass);
@@ -27,14 +30,15 @@ namespace CrudOperatorUI.Controllers
             }
             else
             {
-                Session["Login"] = 0;
+                Session.Abandon();
                 ViewBag.Message = "Yanlış kullanıcı adı ve şifre";
                 return View();  
             }
         }
+        [FilterLog]
         public ActionResult Logout()
         {
-            Session["Login"] = 0;
+            Session.Abandon();
             FormsAuthentication.SignOut();
             return View("Login");
         }

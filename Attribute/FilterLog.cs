@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Mvc;
@@ -27,6 +29,7 @@ namespace CrudOperatorUI.Attribute
             var controllerName = filterContext.RouteData.Values["controller"];
             var actionName = filterContext.RouteData.Values["action"];
             var idName = filterContext.RouteData.Values["id"];
+
             if(idName == null)
             {
                 actionController = controllerName + "/" + actionName;
@@ -38,20 +41,34 @@ namespace CrudOperatorUI.Attribute
             
             var date = DateTime.Now;
             var user = filterContext.HttpContext.Session["Login"];
-            var IPAddress = request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? request.UserHostAddress;
-            var browser = request.Browser.Browser;
 
+            if(user == null)
+            {
+                user = "Anonymous";
+            }
+
+            var browser = request.Browser.Browser;
+            var IPAddress = String.Empty;
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                     IPAddress = ip.ToString();
+                }
+            }
+                      
             try
             {
                 using (SqlConnection conn = new SqlConnection(connect))
                 {
                     SqlCommand cmd = new SqlCommand("spUserLoggerAdd", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", user);
-                    cmd.Parameters.AddWithValue("@action", actionController);
+                    cmd.Parameters.AddWithValue("@name", user.ToString());
+                    cmd.Parameters.AddWithValue("@action", actionController.ToString());
                     cmd.Parameters.AddWithValue("@date", date);
                     cmd.Parameters.AddWithValue("@ip", IPAddress);
-                    cmd.Parameters.AddWithValue("@browser", browser);
+                    cmd.Parameters.AddWithValue("@browser", browser.ToString());
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -63,12 +80,12 @@ namespace CrudOperatorUI.Attribute
                 {
                     SqlCommand cmd = new SqlCommand("spUserLogError", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@name", user);
-                    cmd.Parameters.AddWithValue("@action", actionController);
+                    cmd.Parameters.AddWithValue("@name", user.ToString());
+                    cmd.Parameters.AddWithValue("@action", actionController.ToString());
                     cmd.Parameters.AddWithValue("@date", date);
                     cmd.Parameters.AddWithValue("@ip", IPAddress);
-                    cmd.Parameters.AddWithValue("@browser", browser);
-                    cmd.Parameters.AddWithValue("@errorMessage", ex.Message);
+                    cmd.Parameters.AddWithValue("@browser", browser.ToString());
+                    cmd.Parameters.AddWithValue("@errorMessage", ex.Message.ToString());
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
