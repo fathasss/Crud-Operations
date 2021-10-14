@@ -1,16 +1,10 @@
 ﻿using CrudOperatorUI.Utility;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Web;
-using System.Web.Http.Controllers;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 namespace CrudOperatorUI.Attribute
 {
