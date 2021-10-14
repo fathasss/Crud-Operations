@@ -22,17 +22,13 @@ namespace CrudOperatorUI.Controllers
         [FilterLog]
         public ActionResult Index()
         {
-            //List<Currency> currencyList = CurrencyAccessLayer.GetCurrency();
-            //ViewData["Doviz"] = currencyList;
             IEnumerable<Student> students = studentDataAccessLayer.GetAllStudent();           
             return View(students);
         }
         [HttpPost]
         [FilterLog]
         public ActionResult Index(string searchString)
-        {
-            //List<Currency> currencyList = CurrencyAccessLayer.GetCurrency();
-            //ViewData["Doviz"] = currencyList;
+        {            
             IEnumerable<Student> students = studentDataAccessLayer.SearchStudent(searchString);            
             return View(students);
         }
