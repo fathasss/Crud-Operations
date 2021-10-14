@@ -197,3 +197,4 @@ C:\Users\fatih\source\repos\AdoNet-3-Crud\CrudOperatorUI\obj\Debug\CrudOperatorU
 C:\Users\fatih\source\repos\AdoNet-3-Crud\CrudOperatorUI\bin\System.Web.Http.WebHost.dll
 C:\Users\fatih\source\repos\AdoNet-3-Crud\CrudOperatorUI\bin\System.Web.Http.WebHost.xml
 C:\Users\fatih\source\repos\AdoNet-3-Crud\CrudOperatorUI\bin\tr\System.Web.Http.WebHost.resources.dll
+C:\Users\fatih\source\repos\AdoNet-3-Crud\CrudOperatorUI\bin\StudentDataAccess.dll.config
