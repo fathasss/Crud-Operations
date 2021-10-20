@@ -1,17 +1,22 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+<h2>Admin Login Index</h2>
+@ViewBag.Message
+<form method="post" action="Login/Index">
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="kname" placeholder="Enter email" name="kname">
     </div>
-</body>
-</html>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pass" placeholder="Enter password" name="kpass">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Giriş</button>
+</form>
