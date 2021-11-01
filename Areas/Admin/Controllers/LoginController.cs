@@ -24,28 +24,18 @@ namespace CrudOperatorUI.Areas.Admin.Controllers
         public ActionResult Index(string kname, string kpass)
         {
             UserLogin user = new UserLogin();
-            int result = UserLoginAccess.UserControl(kname, kpass);
-            if (result == 1 && kname == "fatihas")
+            int result = UserLoginAccess.AdminUserControl(kname, kpass);
+            if (result == 1)
             {
-                user.UserRole = LoginType.Admin.ToString();
-                if (user.UserRole == LoginType.Admin.ToString())
-                {
-                    Session.Add("Login", kname);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    Session.Abandon();
-                    ViewBag.Message = "Admin Kullanıcısı ile giriş yapmadınız.";
-                    return RedirectToAction("Index", "Login");
-                }
+                Session.Add("AdminLogin", kname);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 Session.Abandon();
-                ViewBag.Message = "Yanlış kullanıcı adı ve şifre.";
-                return RedirectToAction("Index","Login");
-            }                                        
+                ViewBag.Message = "Admin Kullanıcısı ile giriş yapmadınız.";
+                return View("Index", "Login");
+            }                                     
         }
         [FilterLog]
         public ActionResult Logout()

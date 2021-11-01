@@ -2,6 +2,11 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminMainLayout.cshtml";
+    if (Session["AdminLogin"] == null)
+    {
+        Response.Redirect("~/Admin/Login/Index");
+
+    }
 }
 
 <h2>Admin Index</h2>
